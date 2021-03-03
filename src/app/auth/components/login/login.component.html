@@ -1,0 +1,16 @@
+<p-toast></p-toast>
+<form [formGroup]="form" (ngSubmit)="login()">
+  <span class="p-float-label">
+    <input id="email" type="text" pInputText formControlName="email">
+    <label for="email">Email</label>
+  </span>
+  <span class="p-float-label">
+    <input id="password" type="password" pInputText formControlName="password">
+    <label for="password">Password</label>
+  </span>
+  <span class="p-buttonset">
+    <button pButton type="submit" label="Login" icon="pi pi-check" class="p-button-success" [disabled]="!form.valid"></button>
+    <button pButton type="button" label="Register" icon="pi pi-user" class="p-button-secondary" (click)="register()"></button>
+  </span>
+</form>
+
