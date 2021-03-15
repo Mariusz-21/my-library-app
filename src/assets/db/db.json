@@ -1,32 +1,4 @@
 {
-  "users": [
-    {
-      "email": "test1@mail.com",
-      "password": "$2a$10$jovarksiUy/5ubKeUP1fAOyo4Z3EVrzhJVEONFlKRMhFiBdpZ.B.6",
-      "firstname": "Jan",
-      "lastname": "Nowak",
-      "id": 1
-    },
-    {
-      "email": "test2@mail.com",
-      "password": "$2a$10$ZhvQzgQa6uXNDRoWqYV38.60k7ew56KN7bYBK6tNb5G9y5zD.fHfa",
-      "firstname": "Wojtek",
-      "lastname": "Kowalski",
-      "id": 2
-    },
-    {
-      "email": "test3@mail.com",
-      "password": "$2a$10$f50Qjhzei4MTNo/NjOb9p.wqb/wKVKrkGhft53blOfnNZX/t96RQK",
-      "firstname": "Anka",
-      "lastname": "Nowakowska",
-      "id": 3
-    },
-    {
-      "email": "test5@mail.com",
-      "password": "$2a$10$HtmQf0A59q4T0ylzvyb83.8uu56XRB1eUABvO098forE0a4mETs86",
-      "firstname": "Wojtek",
-      "lastname": "Grabowski",
-      "id": 4
-    }
-  ]
+  "users": [],
+  "books": []
 }

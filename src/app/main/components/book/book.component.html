@@ -1,2 +1,30 @@
 <p-toast></p-toast>
-<p>book works!</p>
+<div class="card">
+  <p-table [value]="books" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,15]">>
+    <ng-template pTemplate="caption">
+      List of books
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+          <th pSortableColumn="title">Title <p-sortIcon field="title"></p-sortIcon></th>
+          <th pSortableColumn="author">Author <p-sortIcon field="author"></p-sortIcon></th>
+          <th>Booking</th>
+          <th>Edit</th>
+          <th>History</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-book>
+      <tr>
+          <td>{{book.title}}</td>
+          <td>{{book.author}}</td>
+          <td><button pButton type="button" label="Booking" icon="pi pi-check-circle" class="p-button-success" (click)="booking(book.id)"></button></td>
+          <td><button pButton type="button" label="Edit" icon="pi pi-pencil" (click)="editBook(book.id)"></button></td>
+          <td><button pButton type="button" label="History" icon="pi pi-list" class="p-button-help" (click)="historyBook(book.id)"></button></td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <button pButton type="button" label="Add new book" icon="pi pi-pencil" (click)="addBook()"></button>
+    </ng-template>
+  </p-table>
+</div>

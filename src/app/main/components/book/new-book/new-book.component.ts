@@ -1,21 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { ApiService } from 'src/app/services/api.service';
 
-
 @Component({
-  selector: 'app-user',
-  templateUrl: './user.component.html',
-  styleUrls: ['./user.component.scss'],
+  selector: 'app-new-book',
+  templateUrl: './new-book.component.html',
+  styleUrls: ['./new-book.component.scss'],
   providers: [MessageService]
 })
-export class UserComponent implements OnInit {
+export class NewBookComponent implements OnInit {
 
-  ageValue: number;
-  newform: FormGroup;
-  userData: any;
+
+  bookform: FormGroup;
   private userId: string;
 
   constructor(
@@ -27,27 +25,27 @@ export class UserComponent implements OnInit {
 
   ngOnInit(): void {
     this.userId = localStorage.getItem('userId');
-    this.apiService.getUserData(this.userId).subscribe(userdata => {
-      this.userData = userdata;
 
-      this.newform = this.fb.group({
-        email: userdata.email,
-        firstname: userdata.firstname,
-        lastname: userdata.lastname,
-      });
+    this.bookform = this.fb.group({
+      title: ['', Validators.required],
+      author: ['', Validators.required],
+      createdBy: this.userId
     });
   }
 
-  update() {
-    this.apiService.updateUser(this.userId, this.newform.value).subscribe(fff => {
+  addBook() {
+    this.apiService.addBook(this.bookform.value).subscribe(fff => {
       console.log(fff);
+      this.router.navigate(['book']);
     },error => {
       console.log(error.message)
     }
     );
+
   }
 
   cancel() {
     this.router.navigate(['book']);
   }
+
 }

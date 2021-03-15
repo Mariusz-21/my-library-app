@@ -1,0 +1,19 @@
+<p-toast></p-toast>
+<form [formGroup]="bookform" (ngSubmit)="updateBook()" *ngIf="bookform">
+  <h2>Edit book</h2>
+  <span class="p-float-label">
+    <input id="title" type="text" pInputText formControlName="title">
+    <label for="title">Title</label>
+  </span>
+  <span class="p-float-label">
+    <input id="author" type="text" pInputText formControlName="author">
+    <label for="author">Author</label>
+  </span>
+  <span class="p-buttonset">
+    <button pButton type="submit" label="Save" icon="pi pi-check" class="p-button-info" [disabled]="!bookform.valid"></button>
+    <button pButton type="button" label="Cancel" icon="pi pi-times" class="p-button-secondary" (click)="cancel()"></button>
+    <button pButton type="button" label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteBook()"></button>
+  </span>
+</form>
+
+

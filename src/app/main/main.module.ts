@@ -10,6 +10,12 @@ import { BookComponent } from './components/book/book.component';
 import { UserComponent } from './components/user/user.component';
 import { SharedModule } from '../shared/shared.module';
 import {InputNumberModule} from 'primeng/inputnumber';
+import {TableModule} from 'primeng/table';
+import { NewBookComponent } from './components/book/new-book/new-book.component';
+import { EditBookComponent } from './components/book/edit-book/edit-book.component';
+import { HistoryBookComponent } from './components/book/history-book/history-book.component';
+import { CardModule } from 'primeng/card';
+
 
 
 const routes: Routes = [
@@ -18,13 +24,25 @@ const routes: Routes = [
   },
   {
     path: 'user', component: UserComponent
+  },
+  {
+    path: 'newBook', component: NewBookComponent
+  },
+  {
+    path: 'editBook/:id', component: EditBookComponent
+  },
+  {
+    path: 'historyBook/:id', component: HistoryBookComponent
   }
 ]
 
 @NgModule({
   declarations: [
     BookComponent,
-    UserComponent
+    UserComponent,
+    NewBookComponent,
+    EditBookComponent,
+    HistoryBookComponent
   ],
   imports: [
     RouterModule.forChild(routes),
@@ -35,7 +53,9 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    InputNumberModule
+    InputNumberModule,
+    TableModule,
+    CardModule
   ]
 })
 export class MainModule { }

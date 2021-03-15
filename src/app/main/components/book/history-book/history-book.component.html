@@ -1,0 +1,44 @@
+<p-toast></p-toast>
+
+<p-card>
+  <div class="p-text-bold">
+    Book history
+  </div>
+  <br>
+  <div *ngIf="book">
+    <div>Book Title:  {{ book.title }}</div>
+  </div>
+  <div *ngIf="book">
+    <div>Book Author:  {{ book.author }}</div>
+  </div>
+  <div *ngIf="createUser">
+    <div>Created by:  {{ createUser.firstname }} {{ createUser.lastname }}</div>
+  </div>
+  <div *ngIf="updateUser">
+    <div>Last update by:  {{ updateUser.firstname }} {{ updateUser.lastname }}</div>
+  </div>
+  <div *ngIf="!updateUser">
+    <div>No one edit this book yet</div>
+  </div>
+</p-card>
+
+<div class="card">
+  <p-table [value]="bookHistory" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,15]">>
+    <ng-template pTemplate="header">
+      <tr>
+          <th pSortableColumn="bookingBy">User<p-sortIcon field="bookingBy"></p-sortIcon></th>
+          <th pSortableColumn="bookingDate">Date<p-sortIcon field="bookingDate"></p-sortIcon></th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-book>
+      <tr>
+          <td>{{book.firstname}} {{book.lastname}}</td>
+          <td>{{book.bookingDate}}</td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="summary">
+      <button pButton type="button" label="Back to book list" icon="pi pi-arrow-left" (click)="back()"></button>
+    </ng-template>
+  </p-table>
+</div>
