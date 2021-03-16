@@ -38,39 +38,39 @@ export class HistoryBookComponent implements OnInit {
     this.bookId = this.route.snapshot.params['id'];
     this.apiService.getBookData(+this.bookId).subscribe(book => {
       this.book = book;
-      console.log(book);
-
 
       // let userBookingDate =  bookdata.bookingData.map(({bookingDate}) => bookingDate);
-      const userIds = book.bookingData.map(({bookingBy}) => bookingBy);
+
+      if(book.bookingData) {
+        const userIds = book.bookingData.map(({bookingBy}) => bookingBy);
 
 
-      this.apiService.getFilteredUsersData(userIds).subscribe((users: UserInterface[]) => {
-         this.bookHistory = book.bookingData.map((bookData: BookDataInterface)=> {
-          const userFound = users.find(user => user.id === +bookData.bookingBy);
-          return {...bookData, ...userFound}
+        this.apiService.getFilteredUsersData(userIds).subscribe((users: UserInterface[]) => {
+           this.bookHistory = book.bookingData.map((bookData: BookDataInterface)=> {
+            const userFound = users.find(user => user.id === +bookData.bookingBy);
+            return {...bookData, ...userFound}
+          })
+          console.log(this.bookHistory)
         })
-        console.log(this.bookHistory)
-      })
-
+      }
 
       this.apiService.getUserData(this.book.createdBy).subscribe(createUser => {
         this.createUser = createUser;
       }, error => {
         console.log(error.message)
       });
-      this.apiService.getUserData(this.book.updatedBy).subscribe(updateUser => {
-        this.updateUser = updateUser;
-      }, error => {
-        console.log(error.message)
-      });
 
-
+      if(this.book.updatedBy) {
+        this.apiService.getUserData(this.book.updatedBy).subscribe(updateUser => {
+          this.updateUser = updateUser;
+        }, error => {
+          console.log(error.message)
+        });
+      }
     });
   }
 
   back() {
-    console.log('back back back');
     this.router.navigate(['book']);
   }
 

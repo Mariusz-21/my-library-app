@@ -32,6 +32,7 @@ export class EditBookComponent implements OnInit {
       this.bookform = this.fb.group({
         title: bookdata.title,
         author: bookdata.author,
+        createdBy: bookdata.createdBy,
         updatedBy: this.userId,
       });
     });

@@ -25,6 +25,9 @@
 <div class="card">
   <p-table [value]="bookHistory" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,15]">>
+    <ng-template pTemplate="caption">
+      Booked by
+    </ng-template>
     <ng-template pTemplate="header">
       <tr>
           <th pSortableColumn="bookingBy">User<p-sortIcon field="bookingBy"></p-sortIcon></th>

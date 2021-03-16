@@ -46,7 +46,7 @@ export class ApiService {
   }
 
   updateBook(bookId: number, bookData: BookInterface) {
-    return this.http.patch<any>(this.baseUrl + '660/books/' + bookId, {...bookData});
+    return this.http.put<BookInterface>(this.baseUrl + '660/books/' + bookId, {...bookData});
   }
 
   deleteBook(bookId: number) {
