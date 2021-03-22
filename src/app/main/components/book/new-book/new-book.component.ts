@@ -29,7 +29,8 @@ export class NewBookComponent implements OnInit {
     this.bookform = this.fb.group({
       title: ['', Validators.required],
       author: ['', Validators.required],
-      createdBy: this.userId
+      createdBy: this.userId,
+      currentlyBooked: null
     });
   }
 
@@ -41,7 +42,6 @@ export class NewBookComponent implements OnInit {
       console.log(error.message)
     }
     );
-
   }
 
   cancel() {

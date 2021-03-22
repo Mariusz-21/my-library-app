@@ -16,7 +16,6 @@ import { BookDataInterface } from '../../models/booking-data.model';
 export class BookComponent implements OnInit {
 
   books: BookInterface[];
-
   private userId: string;
 
   constructor(
@@ -53,6 +52,8 @@ export class BookComponent implements OnInit {
     let updateBook: BookInterface = this.books.find(bookingBook =>
       bookingBook.id === bookId
     );
+    updateBook.currentlyBooked = currentUser;
+
     if (!updateBook.bookingData) {
       updateBook = Object.assign(updateBook, {"bookingData": [currentUser]})
     } else {

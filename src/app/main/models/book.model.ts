@@ -7,4 +7,5 @@ export interface BookInterface {
   updatedBy?: string;
   id?: number;
   bookingData?: BookDataInterface[];
+  currentlyBooked?: BookDataInterface;
 }

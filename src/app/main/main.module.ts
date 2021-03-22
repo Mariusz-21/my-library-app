@@ -15,6 +15,7 @@ import { NewBookComponent } from './components/book/new-book/new-book.component'
 import { EditBookComponent } from './components/book/edit-book/edit-book.component';
 import { HistoryBookComponent } from './components/book/history-book/history-book.component';
 import { CardModule } from 'primeng/card';
+import { BookedBookComponent } from './components/user/booked-book/booked-book.component';
 
 
 
@@ -24,6 +25,9 @@ const routes: Routes = [
   },
   {
     path: 'user', component: UserComponent
+  },
+  {
+    path: 'bookedBook', component: BookedBookComponent
   },
   {
     path: 'newBook', component: NewBookComponent
@@ -42,7 +46,8 @@ const routes: Routes = [
     UserComponent,
     NewBookComponent,
     EditBookComponent,
-    HistoryBookComponent
+    HistoryBookComponent,
+    BookedBookComponent
   ],
   imports: [
     RouterModule.forChild(routes),

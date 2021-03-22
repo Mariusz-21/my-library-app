@@ -1,0 +1,22 @@
+<div class="card">
+  <p-table [value]="books" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [rowsPerPageOptions]="[5,10,15]">>
+    <ng-template pTemplate="caption">
+      Current booked book
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+          <th pSortableColumn="title">Title<p-sortIcon field="title"></p-sortIcon></th>
+          <th pSortableColumn="bookingDate">Booked date<p-sortIcon field="bookingDate"></p-sortIcon></th>
+          <th>Return book</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-book>
+      <tr>
+          <td>{{book.title}}</td>
+          <td>{{book.currentlyBooked?.bookingDate | date: 'MMM d, y'}}</td>
+          <td><button pButton type="button" label="Return" icon="pi pi-arrow-circle-left" class="p-button-secondary" (click)="returnBook(book.id)"></button></td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

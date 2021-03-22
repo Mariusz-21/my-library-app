@@ -18,7 +18,10 @@
       <tr>
           <td>{{book.title}}</td>
           <td>{{book.author}}</td>
-          <td><button pButton type="button" label="Booking" icon="pi pi-check-circle" class="p-button-success" (click)="booking(book.id)"></button></td>
+          <td>
+            <button pButton type="button" label="Booking" icon="pi pi-check-circle" class="p-button-success" (click)="booking(book.id)" *ngIf="!book.currentlyBooked"></button>
+            <div *ngIf="book.currentlyBooked">Available</div>
+          </td>
           <td><button pButton type="button" label="Edit" icon="pi pi-pencil" (click)="editBook(book.id)"></button></td>
           <td><button pButton type="button" label="History" icon="pi pi-list" class="p-button-help" (click)="historyBook(book.id)"></button></td>
       </tr>

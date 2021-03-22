@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import {MenuItem} from 'primeng/api';
+import {MegaMenuItem, MenuItem} from 'primeng/api';
 import { ApiService } from 'src/app/services/api.service';
 
 
@@ -12,7 +12,7 @@ import { ApiService } from 'src/app/services/api.service';
 })
 export class NavBarComponent implements OnInit {
 
-  items: MenuItem[];
+  items: MegaMenuItem[];
   authorized: boolean = false;
 
   constructor(
@@ -28,8 +28,18 @@ export class NavBarComponent implements OnInit {
 
     this.items = [
       {label: 'Book', icon: 'pi pi-fw pi-book', command: () => this.router.navigate(['book'])},
-      {label: 'User', icon: 'pi pi-fw pi-user', command: () => this.router.navigate(['user'])}
-    ];
+      {label: 'User', icon: 'pi pi-fw pi-user',
+        items: [
+          [
+            {label: 'User data',
+            items: [
+              {label: 'Personal data', command: () => this.router.navigate(['user'])},
+              {label: 'Booked book', command: () => this.router.navigate(['bookedBook'])}]
+            }
+          ]
+        ]
+      }
+    ]
   }
 
   logout(): void {

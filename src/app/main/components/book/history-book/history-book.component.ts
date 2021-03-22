@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
-import { LoginFormInterface } from 'src/app/auth/models/login-form.model';
 import { BookInterface } from 'src/app/main/models/book.model';
 import { BookDataInterface } from 'src/app/main/models/booking-data.model';
 import { UserInterface } from 'src/app/main/models/user.model';
@@ -38,19 +37,14 @@ export class HistoryBookComponent implements OnInit {
     this.bookId = this.route.snapshot.params['id'];
     this.apiService.getBookData(+this.bookId).subscribe(book => {
       this.book = book;
-
-      // let userBookingDate =  bookdata.bookingData.map(({bookingDate}) => bookingDate);
-
       if(book.bookingData) {
         const userIds = book.bookingData.map(({bookingBy}) => bookingBy);
-
 
         this.apiService.getFilteredUsersData(userIds).subscribe((users: UserInterface[]) => {
            this.bookHistory = book.bookingData.map((bookData: BookDataInterface)=> {
             const userFound = users.find(user => user.id === +bookData.bookingBy);
             return {...bookData, ...userFound}
           })
-          console.log(this.bookHistory)
         })
       }
 
@@ -69,9 +63,4 @@ export class HistoryBookComponent implements OnInit {
       }
     });
   }
-
-  back() {
-    this.router.navigate(['book']);
-  }
-
 }

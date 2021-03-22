@@ -37,11 +37,8 @@
     <ng-template pTemplate="body" let-book>
       <tr>
           <td>{{book.firstname}} {{book.lastname}}</td>
-          <td>{{book.bookingDate}}</td>
+          <td>{{book.bookingDate | date: 'MMM d, y'}}</td>
       </tr>
-    </ng-template>
-    <ng-template pTemplate="summary">
-      <button pButton type="button" label="Back to book list" icon="pi pi-arrow-left" (click)="back()"></button>
     </ng-template>
   </p-table>
 </div>

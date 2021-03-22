@@ -34,6 +34,7 @@ export class EditBookComponent implements OnInit {
         author: bookdata.author,
         createdBy: bookdata.createdBy,
         updatedBy: this.userId,
+        booked: bookdata.currentlyBooked,
       });
     });
   }
